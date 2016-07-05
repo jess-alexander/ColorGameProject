@@ -13,6 +13,7 @@ var easyButton = document.getElementById("easy");
 easyButton.addEventListener("click", function(){
 	easyButton.classList.add("selected");
 	hardButton.classList.remove("selected");
+	messageDisplay.textContent = "";
 	h1.style.background = "steelblue";
 
 	//create new colors to avoid potential of removing the "chosen" color from the page.
@@ -32,6 +33,7 @@ easyButton.addEventListener("click", function(){
 hardButton.addEventListener("click", function(){
 	hardButton.classList.add("selected");
 	easyButton.classList.remove("selected");
+	messageDisplay.textContent = "";
 	h1.style.background = "steelblue";
 	//create new colors to avoid potential of removing the "chosen" color from the page.
 	numSquares = 6;
@@ -53,7 +55,7 @@ resetButton.addEventListener("click", function(){
 	for(var i = 0; i < squares.length; i++){     //assign color to squares
 		squares[i].style.background = colorsArray[i]; //change colros of squares on page;
 		} 
-	resetButton.textContent = "New Colors";
+	this.textContent = "New Colors";
 	messageDisplay.textContent = "";
 	h1.style.background = "steelblue";
 
