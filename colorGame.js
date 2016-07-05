@@ -1,13 +1,11 @@
 var	numSquares = 6; //start game at level "hard" with 6 squares being displayed
 var colorsArray = generateRandomColors(numSquares);  //generate array of RGB colors
-
-
 var squares = document.querySelectorAll(".square"); //each square to be colored
 var pickedColor = pickColor(); // change name to "winning color" instead?
 var colorDisplay = document.getElementById("colorDisplay"); //span to display winning color
 var messageDisplay = document.querySelector("#message");// span to display "correct"/"try again"
-var h1 = document.querySelector("h1");
-var resetButton = document.querySelector("#reset");
+var h1 = document.querySelector("h1"); //Game title as well as the RGB to be found
+var resetButton = document.querySelector("#reset"); 
 var hardButton = document.querySelector("#hard");
 var easyButton = document.getElementById("easy");
 
@@ -15,7 +13,7 @@ var easyButton = document.getElementById("easy");
 easyButton.addEventListener("click", function(){
 	easyButton.classList.add("selected");
 	hardButton.classList.remove("selected");
-	h1.style.background = "#232323";
+	h1.style.background = "steelblue";
 
 	//create new colors to avoid potential of removing the "chosen" color from the page.
 	numSquares = 3;
@@ -34,7 +32,7 @@ easyButton.addEventListener("click", function(){
 hardButton.addEventListener("click", function(){
 	hardButton.classList.add("selected");
 	easyButton.classList.remove("selected");
-	h1.style.background = "#232323";
+	h1.style.background = "steelblue";
 	//create new colors to avoid potential of removing the "chosen" color from the page.
 	numSquares = 6;
 	colorsArray = generateRandomColors(numSquares);
@@ -57,7 +55,7 @@ resetButton.addEventListener("click", function(){
 		} 
 	resetButton.textContent = "New Colors";
 	messageDisplay.textContent = "";
-	h1.style.background = "#232323";
+	h1.style.background = "steelblue";
 
 });
 
