@@ -1,4 +1,5 @@
-var colorsArray = generateRandomColors(6);  //hard coded for now - randomize later
+var	numSquares = 6; //start game at level "hard" with 6 squares being displayed
+var colorsArray = generateRandomColors(numSquares);  //generate array of RGB colors
 
 
 var squares = document.querySelectorAll(".square"); //each square to be colored
@@ -10,8 +11,44 @@ var resetButton = document.querySelector("#reset");
 var hardButton = document.querySelector("#hard");
 var easyButton = document.getElementById("easy");
 
+
+easyButton.addEventListener("click", function(){
+	easyButton.classList.add("selected");
+	hardButton.classList.remove("selected");
+	h1.style.background = "#232323";
+
+	//create new colors to avoid potential of removing the "chosen" color from the page.
+	numSquares = 3;
+	colorsArray = generateRandomColors(numSquares);
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;
+	for(var i = 0; i < squares.length; i++){
+		if(colorsArray[i]){ //if there is something inside colorsArray at that index, continue
+			squares[i].style.background = colorsArray[i]; //change color
+		}else{
+			squares[i].style.display = "none";
+		}
+	}
+})
+
+hardButton.addEventListener("click", function(){
+	hardButton.classList.add("selected");
+	easyButton.classList.remove("selected");
+	h1.style.background = "#232323";
+	//create new colors to avoid potential of removing the "chosen" color from the page.
+	numSquares = 6;
+	colorsArray = generateRandomColors(numSquares);
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;
+	for(var i = 0; i < squares.length; i++){
+		squares[i].style.background = colorsArray[i]; //change color
+		squares[i].style.display = "block";
+	}
+
+})
+
 resetButton.addEventListener("click", function(){
-	colorsArray = generateRandomColors(6);//generate all new colors
+	colorsArray = generateRandomColors(numSquares);//generate all new colors
 	pickedColor = pickColor();// pick a new random color from array
 	colorDisplay.textContent = pickedColor;//change color display to match picked Color;
 	
