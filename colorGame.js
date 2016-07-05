@@ -6,59 +6,50 @@ var colorDisplay = document.getElementById("colorDisplay"); //span to display wi
 var messageDisplay = document.querySelector("#message");// span to display "correct"/"try again"
 var h1 = document.querySelector("h1"); //Game title as well as the RGB to be found
 var resetButton = document.querySelector("#reset"); 
-var hardButton = document.querySelector("#hard");
-var easyButton = document.getElementById("easy");
+
+var modeButtons = document.querySelectorAll(".mode");
+
+for(var i = 0; i < modeButtons.length; i++){ //allow for addition of medium difficulty later
+	modeButtons[i].addEventListener("click", function(){
+		modeButtons[0].classList.remove("selected");
+		modeButtons[1].classList.remove("selected");//remove selected class from both buttons
+		this.classList.add("selected"); //add it on to the one that was just clicked
+		this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
+
+		reset();
+
+	
 
 
-easyButton.addEventListener("click", function(){
-	easyButton.classList.add("selected");
-	hardButton.classList.remove("selected");
-	messageDisplay.textContent = "";
-	h1.style.background = "steelblue";
-
-	//create new colors to avoid potential of removing the "chosen" color from the page.
-	numSquares = 3;
-	colorsArray = generateRandomColors(numSquares);
-	pickedColor = pickColor();
-	colorDisplay.textContent = pickedColor;
-	for(var i = 0; i < squares.length; i++){
-		if(colorsArray[i]){ //if there is something inside colorsArray at that index, continue
-			squares[i].style.background = colorsArray[i]; //change color
-		}else{
-			squares[i].style.display = "none";
-		}
-	}
-})
-
-hardButton.addEventListener("click", function(){
-	hardButton.classList.add("selected");
-	easyButton.classList.remove("selected");
-	messageDisplay.textContent = "";
-	h1.style.background = "steelblue";
-	//create new colors to avoid potential of removing the "chosen" color from the page.
-	numSquares = 6;
-	colorsArray = generateRandomColors(numSquares);
-	pickedColor = pickColor();
-	colorDisplay.textContent = pickedColor;
-	for(var i = 0; i < squares.length; i++){
-		squares[i].style.background = colorsArray[i]; //change color
-		squares[i].style.display = "block";
-	}
-
-})
-
-resetButton.addEventListener("click", function(){
+	});
+}
+function reset(){
+	//this function needs to.... 	
+		//figure out how many squares to show
+		//pick new colors
+		//pick a new "picked color"
+		//update page to reflect changes
 	colorsArray = generateRandomColors(numSquares);//generate all new colors
 	pickedColor = pickColor();// pick a new random color from array
 	colorDisplay.textContent = pickedColor;//change color display to match picked Color;
-	
-	for(var i = 0; i < squares.length; i++){     //assign color to squares
-		squares[i].style.background = colorsArray[i]; //change colros of squares on page;
-		} 
-	this.textContent = "New Colors";
+	resetButton.textContent = "New Colors";
 	messageDisplay.textContent = "";
 	h1.style.background = "steelblue";
 
+	for(var i = 0; i < squares.length; i++){     //assign color to squares
+
+		if(colorsArray[i]){ //if there is something inside colorsArray at that index, continue
+			squares[i].style.display = "block"; //show square
+			squares[i].style.background = colorsArray[i]; //change color
+		}else{ //if there is no data in array at index
+			squares[i].style.display = "none";  //hide that square
+		}
+	}
+}
+
+
+resetButton.addEventListener("click", function(){
+	reset();
 });
 
 colorDisplay.textContent = pickedColor;
