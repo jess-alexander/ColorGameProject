@@ -1,25 +1,27 @@
 <!DOCTYPE html>
+<!-- this is a game to display an rgb color to have to user identify within a block of colored squares -->
+<!-- simple HTML/CSS/Javascript application -->
 <html>
 <head>
 	<title>Color Game</title>
 	<link rel="stylesheet" type="text/css" href="colorGame.css">
 </head>
 <body>
-<div>
-	<h1>The Great 
-	<br>   <!-- frowned upon -- change later --> 
-	<span id = "colorDisplay">RGB</span>
-	<br> 
-	Color Game</h1>
+<div>  <!-- Page Title  -->
+	<h1>The Great </h1>
+	
+	<h1><span id = "colorDisplay">RGB</span><h1>
+	
+	<h1>Color Game</h1>
 </div>
 
-<div id = "stripe">
+<div id = "stripe">   <!-- "console" bar  -->
 	<button id = "reset">New Colors</button>
 	<span id = "message"></span>
 	<button class = "mode" >Easy</button>
 	<button class = "mode selected">Hard</button>
 </div>
-<div id = "container">
+<div id = "container">  <!-- block of six squares to display colors -->
 	<div class = "square"> </div>
 	<div class = "square"> </div>
 	<div class = "square"> </div>
